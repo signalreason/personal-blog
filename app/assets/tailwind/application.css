@@ -4,6 +4,8 @@
 @source "../../../app/javascript/**/*.js";
 @source "../../../app/views/**/*";
 
+@plugin "@tailwindcss/typography";
+
 @plugin "daisyui" {
   themes: light, dark --prefersdark, business --default;
 }
