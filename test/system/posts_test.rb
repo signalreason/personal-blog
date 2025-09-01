@@ -6,7 +6,7 @@ class PostsTest < ApplicationSystemTestCase
     uri.userinfo = [
       Rails.application.credentials.admin_user,
       Rails.application.credentials.admin_password
-    ].join(':')
+    ].join(":")
     uri.to_s
   end
 
