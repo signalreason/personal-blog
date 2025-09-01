@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "login" => "admin#login"
+  get "logout" => "admin#logout"
+
   namespace :admin do
     resources :posts, only: [ :new, :edit, :create, :update, :destroy ]
   end
@@ -15,5 +18,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "posts#index"
+  root "published_posts#index"
 end

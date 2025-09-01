@@ -7,7 +7,9 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Posts</h1>
-    <%= link_to "New post", new_admin_post_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <% if admin_user? -%>
+      <%= link_to "New post", new_admin_post_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <% end %>
   </div>
 
   <% if @posts.any? %>
