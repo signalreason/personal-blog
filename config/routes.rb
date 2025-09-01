@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :posts, only: [:new, :edit, :create, :update, :destroy]
+    resources :posts, only: [ :new, :edit, :create, :update, :destroy ]
   end
-  resources :posts, only: [:index, :show], controller: "published_posts"
+  resources :posts, only: [ :index, :show ], controller: "published_posts"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
