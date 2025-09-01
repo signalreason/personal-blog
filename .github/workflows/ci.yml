@@ -78,7 +78,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ Rails.application.credentials.GITHUB_TEST_KEY }}
+          RAILS_MASTER_KEY: 8364792a3255abb382841e4f94d1ccdd
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
 
