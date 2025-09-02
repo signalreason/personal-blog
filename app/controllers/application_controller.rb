@@ -43,12 +43,8 @@ class ApplicationController < ActionController::Base
   # Constant-time, equal-length comparison using digests.
   def credentials_match?(user, password)
     return false if user.blank? || password.blank?
-    u  = ::Digest::SHA256.hexdigest(user.to_s)
-    pu = ::Digest::SHA256.hexdigest(admin_user)
-    p  = ::Digest::SHA256.hexdigest(password.to_s)
-    pp = ::Digest::SHA256.hexdigest(admin_password)
 
-    ActiveSupport::SecurityUtils.secure_compare(u,  pu) &&
-      ActiveSupport::SecurityUtils.secure_compare(p, pp)
+    ActiveSupport::SecurityUtils.secure_compare(user, admin_user) &&
+      ActiveSupport::SecurityUtils.secure_compare(password, admin_password)
   end
 end
