@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   def admin?
     return @_is_admin if defined?(@_is_admin)
 
-    # Parse header if present; no challenge sent.
     authenticated = authenticate_with_http_basic do |user, password|
       credentials_match?(user, password)
     end
@@ -20,7 +19,6 @@ class ApplicationController < ActionController::Base
 
   # Use in controllers that should 401-challenge when not admin.
   def require_admin!
-    # Optionally short-circuit if credentials are not configured.
     unless admin_user.present? && admin_password.present?
       return head :unauthorized
     end
@@ -40,7 +38,6 @@ class ApplicationController < ActionController::Base
     Rails.application.credentials.admin_password.to_s
   end
 
-  # Constant-time, equal-length comparison using digests.
   def credentials_match?(user, password)
     return false if user.blank? || password.blank?
 
