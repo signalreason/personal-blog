@@ -7,8 +7,8 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Posts</h1>
-    <% if admin_user? -%>
-      <%= link_to "New post", new_admin_post_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <% if admin? -%>
+      <%= link_to "New post", new_post_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
     <% end %>
   </div>
 
@@ -17,8 +17,8 @@
       <table id="posts" class="table">
         <thead>
           <tr>
-            <td>ID / Edit</td>
-            <td>Title / Show</td>
+            <td>ID</td>
+            <td>Title</td>
             <td>Published</td>
             <td>Last Update</td>
           </tr>
@@ -26,7 +26,7 @@
         <tbody>
           <% @posts.each do |post| %>
             <tr>
-              <td><%= link_to post.id, edit_admin_post_path(post) %></td>
+              <td><%= link_to_if admin?, post.id, edit_post_path(post) %></td>
               <td><%= link_to post.title, post %></td>
               <td>
                 <% if post.status == "draft" -%>

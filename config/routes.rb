@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get "login" => "admin#login"
-  get "logout" => "admin#logout"
-
-  namespace :admin do
-    resources :posts, only: [ :new, :edit, :create, :update, :destroy ]
-  end
-  resources :posts, only: [ :index, :show ], controller: "published_posts"
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -18,5 +10,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "published_posts#index"
+  root "posts#index"
+
+  resources :posts
 end
