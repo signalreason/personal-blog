@@ -33,11 +33,11 @@ class ApplicationController < ActionController::Base
   private
 
   def admin_user
-    @admin_user ||= Rails.application.credentials.admin_user.to_s
+    Rails.application.credentials.admin_user.to_s
   end
 
   def admin_password
-    @admin_password ||= Rails.application.credentials.admin_password.to_s
+    Rails.application.credentials.admin_password.to_s
   end
 
   # Constant-time, equal-length comparison using digests.
